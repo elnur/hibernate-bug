@@ -1,29 +1,25 @@
 package pro.elnur.model;
 
 import java.io.Serializable;
-import java.util.UUID;
-import org.hibernate.annotations.Type;
 
 public class MembershipId implements Serializable {
-    @Type(type = "org.hibernate.type.PostgresUUIDType")
-    public UUID employee;
-    @Type(type = "org.hibernate.type.PostgresUUIDType")
-    public UUID group;
+    private Group group;
+    private Employee employee;
 
-    public UUID getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(UUID employee) {
-        this.employee = employee;
-    }
-
-    public UUID getGroup() {
+    public Group getGroup() {
         return group;
     }
 
-    public void setGroup(UUID group) {
+    public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     @Override
@@ -41,8 +37,8 @@ public class MembershipId implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = employee != null ? employee.hashCode() : 0;
-        result = 31 * result + (group != null ? group.hashCode() : 0);
+        int result = group != null ? group.hashCode() : 0;
+        result = 31 * result + (employee != null ? employee.hashCode() : 0);
         return result;
     }
 }
